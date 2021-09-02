@@ -36,7 +36,7 @@ export function genSysNames() {
 export function initSystems(): System[]
 {
   const systems: System[] = readItem( 'systems' );
-  console.log( systems );
+  // console.log( systems );
 
   if (systems)
   {
