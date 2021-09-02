@@ -1,15 +1,13 @@
 
 
 .planet {
-    /* transform: rotate3d(0, 0, 1, 5deg) scale3d(0.23, 0.23, 1); */
     transition: transform 1s ease;
-    border-radius: 100%;
+    border-radius: 50%;
     width: 255px;
     height: 255px;
     position: absolute;
     left: calc( 50vw - 255px );
     top: calc( 50vh - 255px );
-    /* animation: fadein 3000ms linear forwards; */
   }
   
   .planet:before {
@@ -17,10 +15,8 @@
     width: 1024px;
     height: 1024px;
     position: absolute;
-    border-radius: 100%;
-    /* background: #0F0; */
+    border-radius: 50%;
     mix-blend-mode:soft-light;
-    /* opacity: 0.35; */
     z-index: 100;
   }
   
@@ -29,7 +25,7 @@
     width: 1024px;
     height: 1024px;
     position: absolute;
-    border-radius: 100%;
+    border-radius: 50%;
     top: 0;
     left: 0;
     box-shadow: inset 25px 40px 100px 0px rgba(255, 255, 255, 0.45);
@@ -38,12 +34,10 @@
   .planetClip {
     width: 1024px;
     height: 1024px;
-    border-radius: 100%;
+    border-radius: 50%;
     position: relative;
     -webkit-clip-path: circle(512px at 512px 512px); 
             clip-path: circle(512px at 512px 512px); 
-            
-    /* background-image: radial-gradient(circle farthest-side at 0% 0%, rgba(255, 255, 255, 0.25) 0%, rgba(0, 0, 0, 0.35) 100%), radial-gradient(circle farthest-side at 0% 0%, #008d00 25%, transparent 80%), radial-gradient(circle farthest-side at 0% 0%, #00d20d 0%, transparent 100%), radial-gradient(circle farthest-side at 50% 0%, #005700 0%, #270300 85%); */
   } 
   
   .terrain {
@@ -53,8 +47,6 @@
     position: absolute;
     mix-blend-mode: soft-light;
     opacity: 0.5;
-    /* -webkit-animation: rotatePlanet 10s linear infinite;
-            animation: rotatePlanet 10s linear infinite; */
   }
   
   
@@ -67,32 +59,4 @@
     }
   } 
 
-  @-webkit-keyframes rotatePlanet {
-    0% {
-      transform: translate3d(0, 0, 0);
-    }
-    100% {
-      transform: translate3d(-50%, 0, 0);
-    }
-  }
-  
-/* 
-  @keyframes rotatePlanetCCW {
-    0% {
-      transform: translate3d(0, 0, 0);
-    }
-    100% {
-      transform: translate3d(+50%, 0, 0);
-    }
-  } 
-
-  @-webkit-keyframes rotatePlanetCCW {
-    0% {
-      transform: translate3d(0, 0, 0);
-    }
-    100% {
-      transform: translate3d(+50%, 0, 0);
-    }
-  }
-   */
   
