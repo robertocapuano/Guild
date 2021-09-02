@@ -3,6 +3,7 @@ import { Product } from "./types";
 export const MACHINERY: Product[] = [
     { name: 'Crop Harvesters', basePrice: 130, weight: 130 },
     { name: 'Marine Supplies', basePrice: 310, weight: 300 },
+    { name: 'Windtraps', basePrice: 210, weight: 200 },
 ];
 
 export const MEDICINES: Product[] = [
