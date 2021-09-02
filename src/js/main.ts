@@ -1,3 +1,4 @@
+import { playNote } from './audio';
 import { initCargo } from './cargo';
 import { createHudCargo } from './hudca';
 import { createHudPlanet, destroyHudPlanet } from './hudpl';
@@ -7,7 +8,7 @@ import { createPlanet, destroyPlanet } from './planet';
 import { initSystems, RSeed } from './procgen';
 import { createStarfield } from './starfield';
 import { createSysMap } from './sysmap';
-import { Planet } from './types';
+import { Planet, System } from './types';
 import { RND } from './utils';
 
 RSeed( Math.trunc(RND()* 255) );
@@ -20,6 +21,9 @@ const backToMap = () => {
 };
 
 const showPlanet = ( pl: Planet ) =>{
+    
+    playNote(4, 'C', 50 );
+
     setTimeout( () => {
         createPlanet(pl);
         createHudTrade(pl);
@@ -29,20 +33,14 @@ const showPlanet = ( pl: Planet ) =>{
 };
 
 
-const systems = initSystems();
-initCargo();
+let systems: System[];
 
 createStarfield();
-// 
 
-createIntro(() => {
+createIntro( () => {
+
+    systems = initSystems();
+    initCargo();
+
     createSysMap(systems, showPlanet );
 });
-
-// {
-//     const pl = systems[0].planets[0];
-//     createPlanet(pl);
-//     createHudTrade(pl);
-//     createHudPlanet(pl );
-//     createHudCargo( backToMap );
-// }

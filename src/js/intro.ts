@@ -1,4 +1,5 @@
 import * as REDOM from 'redom';
+import { changeVolume, playNote, setupAudio } from './audio';
 import { PI, RAD, TWOPI } from "./math";
 import { nextid, RND } from "./utils";
 
@@ -78,20 +79,13 @@ export function createIntro( startCall: ()=>void ): HTMLElement
         let i = 0;
         const rx = 19;
         const ry = 19;
-        // for ( let ry = 1; ry<20; ry+=4)
-        // for ( let rx = 1; rx<20; rx+=4)
         {
-            // let cityStat = phrases[i];
-
-            // const gray = i/N * 255;
-            const color = colors[i%colors.length];//.toHexString();// `rgb(${gray},${gray}, ${gray} )`;
+            const color = colors[i%colors.length];
 
             const sct = createEllipse(  cx, cy, rx, ry, color );
            
-            // sct.addEventListener('click', () => evt_emt.emit( ''+i )  );
 
             const secs = .5;
-
 
             const anim_fade = REDOM.svg( 'animate', {
                 id: nextid('intro'),
@@ -196,7 +190,14 @@ export function createIntro( startCall: ()=>void ): HTMLElement
             }
         );
 
-        container.addEventListener('click', () => {
+        const start = (isClear: boolean) => {
+
+            if (isClear)
+                window.localStorage.clear();
+
+            setupAudio();
+            changeVolume( .25 );
+
             title.style.animation = 'fadeOut 500ms linear forwards';
             author.style.animation = 'fadeOut 500ms linear forwards';
             container.style.animation = 'zoomOut 1000ms linear forwards';
@@ -207,11 +208,22 @@ export function createIntro( startCall: ()=>void ): HTMLElement
                 REDOM.unmount(app, author  );
                 startCall();
             }, 1000 );
+        };
+
+        container.addEventListener('click', (event) => {
+            const isClear = event.shiftKey;
+            start(isClear)
         });
+
         REDOM.mount(container, drawing);
     }
 
     return container;
+}
+
+function start()
+{
+
 }
 
 function createEllipse( cx: number, cy: number, rx: number, ry: number, color: string ): SVGElement

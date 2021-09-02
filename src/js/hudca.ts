@@ -2,6 +2,7 @@ import * as REDOM from 'redom';
 import { addCell, addHeader, addRow } from './hud';
 import { nextid } from "./utils";
 import { cargo } from './cargo';
+import { playNote } from './audio';
 
 export function createHudCargo( exitListener: ()=>void )
 {
@@ -101,7 +102,10 @@ export function createHudCargo( exitListener: ()=>void )
                     });
                     REDOM.mount( cell, btn );
 
-                    btn.onclick = exitListener;
+                    btn.onclick = () => {
+                        playNote(4, 'C', 50 );
+                        exitListener();
+                    }
                 }
             }
         }

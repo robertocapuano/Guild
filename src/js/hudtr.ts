@@ -7,6 +7,7 @@ import { getSign, nextid, RND } from "./utils";
 import { findSlot} from './cargo';
 import { getDeltaPrice } from './trader';
 import { setAvail } from './procgen';
+import { playNote } from './audio';
 
 export function createHudTrade( pl: Planet )
 {
@@ -83,6 +84,7 @@ export function createHudTrade( pl: Planet )
         {
             const row = addRow( tbody );
             row.onclick = () => {
+                playNote(4, 'D', 50 );
                 destroyHudProduct();
                 createHudProduct( pl, tr, () => {
                     units.textContent = '' + findSlot( tr.product ).units;

@@ -1,4 +1,5 @@
 import * as REDOM from 'redom';
+import { playNote } from './audio';
 import { buy, canBuy, canSell, findSlot, sell } from './cargo';
 import { addCell, addHeader, addRow } from './hud';
 import { updateCargo } from './hudca';
@@ -8,8 +9,8 @@ import { getSignedPrice, nextid } from "./utils";
 
 export function createHudProduct( pl: Planet, tr: ProductTrade, updateCell: ()=>void )
 {
-    const slot = findSlot( tr.product );
-    const pr = tr.product;
+    // const slot = findSlot( tr.product );
+    // const pr = tr.product;
 
     const tableContainer = document.querySelector("#hudtr-container");
 
@@ -89,7 +90,12 @@ export function createHudProduct( pl: Planet, tr: ProductTrade, updateCell: ()=>
 
                     buyBtn.addEventListener( "click", () => {
                         if (!canBuy(tr) )
+                        {
+                            playNote(3, 'C', 50 );
                             return;
+                        }
+
+                        playNote(4, 'E', 50 );
 
                         buy( tr, buyPrice );
                         updateCell();
@@ -121,8 +127,12 @@ export function createHudProduct( pl: Planet, tr: ProductTrade, updateCell: ()=>
 
                     sellBtn.addEventListener( "click", () => {
                         if (!canSell(tr) )
+                        {
+                            playNote(3, 'C', 50 );
                             return;
+                        }
 
+                        playNote(4, 'E', 50 );
                         sell( tr, sellPrice );
                         updateCell();
                         updateCargo();
