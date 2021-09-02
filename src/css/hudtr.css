@@ -9,7 +9,14 @@
       
 }
 
-
+.number-circle {
+  width: 2em;
+  line-height: 1.8em;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 1em;
+  border: 1px solid #FFF;
+}
   
   
   @keyframes hudtrRotateIn {

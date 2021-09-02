@@ -70,8 +70,8 @@ export function createHudProduct( pl: Planet, tr: ProductTrade, updateCell: ()=>
             });
             REDOM.mount( table, tbody );
 
-            let availBuy: HTMLTableCellElement;
-            let availSell: HTMLTableCellElement;
+            let availBuy: HTMLDivElement;
+            let availSell: HTMLDivElement;
             
             // BUY
             {
@@ -100,13 +100,24 @@ export function createHudProduct( pl: Planet, tr: ProductTrade, updateCell: ()=>
                         buy( tr, buyPrice );
                         updateCell();
                         updateCargo();
-                        availBuy.textContent = `(${tr.avail})`;
-                        availSell.textContent = `(${findSlot(tr.product).units})` ;
+                        availBuy.textContent = `${tr.avail}`;
+                        availSell.textContent = `${findSlot(tr.product).units}` ;
 
                     } );
                 }
 
-                availBuy = addCell(row,  `(${tr.avail})` );
+                availBuy = REDOM.el('div',{
+                    id: nextid('hud'),
+                    textContent: `${tr.avail}`,
+                    classList: 'number-circle',
+                });
+
+                const availBuyCell = REDOM.el('td',{
+                    id: nextid('hud'),
+                });
+                REDOM.mount(availBuyCell, availBuy );
+                REDOM.mount(row, availBuyCell );
+
                 const buyPrice = getBuyPrice( pl, tr );
                 addCell(row, ''+ `${buyPrice} (Cr)` );
                 addCell(row, ''+ `${ getSignedPrice(getDeltaPrice(tr, buyPrice))}%` );
@@ -136,12 +147,23 @@ export function createHudProduct( pl: Planet, tr: ProductTrade, updateCell: ()=>
                         sell( tr, sellPrice );
                         updateCell();
                         updateCargo();
-                        availSell.textContent = `(${findSlot(tr.product).units})` ;
+                        availSell.textContent = `${findSlot(tr.product).units}` ;
 
                     });
                 }
 
-                availSell = addCell(row, `(${findSlot(tr.product).units})` );
+                availSell = REDOM.el('div',{
+                    id: nextid('hud'),
+                    textContent: `${findSlot(tr.product).units}`,
+                    classList: 'number-circle',
+                });
+
+                const availSellCell = REDOM.el('td',{
+                    id: nextid('hud'),
+                });
+                REDOM.mount(availSellCell, availSell );
+                REDOM.mount(row, availSellCell );
+
                 const sellPrice =  getSellPrice( pl, tr );
                 addCell(row, ''+ `${sellPrice} (Cr)` );
                 addCell(row, ''+ `${getSignedPrice(getDeltaPrice(tr, sellPrice))}%` );
