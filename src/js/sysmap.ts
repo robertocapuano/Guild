@@ -66,7 +66,7 @@ export function createSysMap( systems: System[], selectionListener: ( pl: Planet
 
             const large_r = .9;
             const normal_r = .6;
-            const small_r = .3;
+            const small_r = .4;
 
             const sizea = [ small_r, normal_r, large_r];
 
@@ -80,7 +80,7 @@ export function createSysMap( systems: System[], selectionListener: ( pl: Planet
                     style: {
                         'background-color': `rgb(${pl.baseColor.r},${pl.baseColor.g},${pl.baseColor.b})`,
                         'animation-delay': `${i*250}ms`,
-                        'top': `${ PLANET_H *i+10}px`,
+                        'top': `${ PLANET_H*i  }px`,
                         'left': `${-radius}rem`,
                         'width': `${radius*2}rem`,
                         'height': `${radius*2}rem`,
