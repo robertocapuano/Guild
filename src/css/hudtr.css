@@ -1,0 +1,38 @@
+
+.hudtr-container
+{
+    position: absolute; 
+    right: 4rem; 
+    top: 100px;
+     width: 22rem;
+     height: 15rem;
+      
+}
+
+
+  
+  
+  @keyframes hudtrRotateIn {
+    from {
+        transform:  perspective(1000px) rotateY(-0deg) translateX(+20rem);;
+        opacity: .0;
+      }
+      to {
+        transform:  perspective(1000px) rotateY(-15deg) translateX(0);
+        opacity: .5;
+    }
+  }
+
+  
+  @keyframes hudtrRotateOut {
+    to {
+        transform:  perspective(1000px) rotateY(-0deg) translateX(+20rem);;
+        opacity: .0;
+      }
+      from {
+        transform:  perspective(1000px) rotateY(-15deg) translateX(0);
+        opacity: .5;
+    }
+  }
+
+  

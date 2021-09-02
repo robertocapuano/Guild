@@ -1,0 +1,34 @@
+.hudpl-container
+{
+    position: absolute; 
+    left: 4rem; 
+    top: 100px;
+     width: 15rem;
+     height: auto; 
+      opacity: 0;
+      /* z-index: 2000; */
+    /* animation: 3000ms ease-out 500ms 1 normal forwards running hudplRotateIn */
+}
+  
+@keyframes hudplRotateIn {
+    from {
+        transform:  perspective(1000px) rotateY(-0deg) translateX(-20rem);
+        opacity: .0;
+      }
+      to {
+        transform:  perspective(1000px) rotateY(+15deg) translateX(0);
+        opacity: .5;
+    }
+  }
+
+
+@keyframes hudplRotateOut {
+  to {
+      transform:  perspective(1000px) rotateY(-0deg) translateX(-20rem);
+      opacity: .0;
+    }
+    from {
+      transform:  perspective(1000px) rotateY(+15deg) translateX(0);
+      opacity: .5;
+  }
+}

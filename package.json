@@ -1,0 +1,23 @@
+{
+  "name": "guild",
+  "version": "1.0.0",
+  "description": "js13k submission",
+  "scripts": {
+    "dev": "parcel serve src/index.html",
+    "build": "parcel build src/index.html --no-source-maps --public-url ./",
+    "zip": "7za a submission.zip dist -mx9",
+    "clean": "rm -f submission.zip; rm -rf dist",
+    "pack": "npm run clean && npm run build &&npm run zip"
+  },
+  "author": "Roberto Capuano",
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/transformer-image": "^2.0.0-rc.0",
+    "jszip-cli": "^1.4.24",
+    "parcel": "latest"
+  },
+  "dependencies": {
+    "redom": "^3.27.1",
+    "simplex-noise": "^2.4.0"
+  }
+}

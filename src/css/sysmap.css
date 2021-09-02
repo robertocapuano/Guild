@@ -1,0 +1,133 @@
+  
+  .map-wrapper {
+    width: 100vw;
+    position: absolute;
+    /* left: 0; */
+    height: 100vh;
+
+    /* display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 10px;
+    grid-template-rows: repeat(4, 1fr);
+    grid-row-gap: 10px; */
+
+  }
+  
+  .map-wrapper {
+    overflow-x: hidden;
+  }
+  
+  .msystem-wrapper {
+    display: inline-block;
+    padding: 0 2.5rem;
+    overflow-y: hidden;
+    vertical-align: top;
+    overflow-x: hidden;
+  }
+  
+  .msystem {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    width: 0.1rem;
+    /* height: 15rem; */
+    color: #fff;
+    background-color: #568;
+    transform: scale(0);
+    transform-origin: top center;
+    /* animation: scaleUpMap 1500ms linear forwards; */
+  }
+
+   .msysname {
+    /* display: block; */
+    /* position: absolute; */
+    left: 0.5rem;
+    bottom: 0;
+    /* font-family: monospace; */
+    font-size: .75rem;
+    color: #fff;
+    /* animation: fadeinMap 6000ms linear forwards; */
+  } 
+  
+  .mplanet {
+    position: absolute;
+    display: block;
+    border-radius: 50%;
+    opacity: 0;
+    /* animation: 3000ms ease-out 3000ms 1 normal forwards running slideInMap; */
+}
+
+  .mname {
+    position: absolute;
+    bottom: -1.2rem;
+    left: 1rem;
+    font: monospace;
+  }
+
+  @keyframes scaleUpMap {
+    to {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes scaleDownMap {
+    to {
+      transform: scale(0);
+    }
+  }
+
+
+  @keyframes slideInMap {
+    from {
+      transform: translateY(-10rem);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0rem);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideOutMap {
+    to {
+      transform: translateY(-10rem);
+      opacity: 0;
+    }
+    from {
+      transform: translateY(0rem);
+      opacity: 1;
+    }
+  }
+
+  /* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  /* border-bottom: 1px dotted white; */
+  /* overflow:visible; */
+
+
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  /* width: 80px; */
+  /* background-color: black; */
+  color: rgba(255,255,255,.7);
+  text-align: left;
+  margin-left: 1.5rem;
+  /* padding: 5px 0; */
+  /* border-radius: 6px; */
+
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  /* z-index: 300; */
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+  
