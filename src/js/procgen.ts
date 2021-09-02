@@ -1,9 +1,9 @@
 import { PLANET_H } from "./consts";
 import { PRODUCTS } from "./products";
+import { readItem, storeItem } from './storage';
 import { getBasePrice } from "./trader";
 import { Planet, PlanetClimate, PlanetClimateLabels, PlanetEconomy, PlanetEconomyLabels, PlanetSize, ProductTrade, RGB, System } from "./types";
 import { HSVtoRGB, RGBtoHSV, RND } from "./utils";
-import { readItem, storeItem } from './storage';
 
 export let R = (n: number) => (seed = (seed * 69069 + 1) % 2 ** 31) % n;
 export let FR = () => R(1e9) / 1e9;
@@ -35,7 +35,7 @@ export function genSysNames() {
 
 export function initSystems(): System[]
 {
-  const systems: System[] = readItem( 'systems' );
+  let systems: System[] = readItem( 'systems' );
   // console.log( systems );
 
   if (systems)
@@ -50,7 +50,11 @@ export function initSystems(): System[]
     return systems;
   }
 
-  return genSystems();
+  systems = genSystems();
+  storeItem( 'systems', systems );
+
+  return systems;
+
 }
 
 function genSystems(): System[]
@@ -64,7 +68,7 @@ function genSystems(): System[]
   const systems: System[] = [];
   
   const all_pos = [];
-  const THRESHOLD_X = 50;
+  const THRESHOLD_X = 70;
   const THRESHOLD_Y = 50;
 
   let brk = 0;
@@ -129,7 +133,6 @@ function genSystems(): System[]
         sumWeight += fr;
       }
 
-
       const trade: Array<ProductTrade> = PRODUCTS.map( product => {
 
         const [demand, supply, price ] = getBasePrice( product )
@@ -143,22 +146,6 @@ function genSystems(): System[]
           avail, 
         };
       });
-/*
-      const trade: Array<ProductTrade> = [];
-      const allProducts = PRODUCTS.slice(0);
-
-      for ( let i=0; i<5; ++i )
-      {
-        const j = Math.trunc( allProducts.length * RND() );
-        const product = allProducts[j];
-        
-        allProducts.splice( j, 1 );
-
-        const [demand, supply, price ] = getBasePrice( product )
-
-        trade.push(;
-      }
-*/
 
       const hsv = RGBtoHSV(baseColor.r, baseColor.g, baseColor.b);
       hsv.v *= .4 + .6 * (j+1)/nplanets;
