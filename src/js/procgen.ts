@@ -161,14 +161,14 @@ function genSystems(): System[]
       {
         case PlanetClimate.DESERT:
         {
-          population = Math.trunc( RND()* 100 )+ 'M';
+          population = Math.trunc( RND()* 100 + 10)+ 'M';
           economy = PlanetEconomy.INDUSTRIAL;
           break;
         }
 
         case PlanetClimate.TEMPERATE:
           {
-            population = Math.trunc( RND()* 10) + 'B';
+            population = Math.trunc( RND()* 10 + 1) + 'B';
             economy = Math.trunc(RND()* PlanetEconomy.LENGTH);
             
             break;
@@ -176,7 +176,7 @@ function genSystems(): System[]
 
           case PlanetClimate.EQUATORIAL:
             {
-              population =Math.trunc(  RND()* 100 ) + 'B';
+              population =Math.trunc(  RND()* 40 +1 ) + 'B';
               economy = PlanetEconomy.AGRICOLTURE;
               break;
             }
