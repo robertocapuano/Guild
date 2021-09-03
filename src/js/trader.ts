@@ -23,8 +23,8 @@ export function getDeltaPrice( tr: ProductTrade )
 
 export function getBasePrice(pr: Product )
 {
-    const demand = Math.trunc(RND()*1000);
-    const supply = Math.trunc(RND()*1000);
+    const demand = Math.trunc(RND()*1000+1);
+    const supply = Math.trunc(RND()*1000+1);
     const price = Math.round(pr.basePrice * (demand/supply)*100)/100;
     return [demand, supply, price];
 }
