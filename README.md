@@ -13,7 +13,7 @@ To visit a planet just click on it.
 ![planet](pics/planet.jpg)
 
 The planet view shows, on the left side:
-- Planet details: name of the planet and tax rate.
+- Planet details: name, population, economy, climate and tax rate.
 - Cargo details: credit and capacity.
 
 on the right side:
