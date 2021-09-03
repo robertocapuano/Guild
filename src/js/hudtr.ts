@@ -99,6 +99,7 @@ export function createHudTrade( pl: Planet )
 
             addCell( row, tr.product.name );
             const sellunits  = addCell( row, findSlot( tr.product ).units + '' );
+            sellunits.style.textAlign = 'center';
             // const buyunits = addCell( row, tr.avail+ '' );
             // const units =  addCell( row, findSlot( tr.product ).units + '/' +  tr.avail );
             addCell( row, ''+tr.price );
