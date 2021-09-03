@@ -46,7 +46,7 @@ export function createHudProduct( pl: Planet, tr: ProductTrade, updateCell: ()=>
             REDOM.mount( table, thead );
 
             const row = addRow( thead );
-            addHeader( row, tr.product.name );
+            addHeader( row, tr.product.name + '('+tr.product.weight +' Kg)' );
         }
 
         {

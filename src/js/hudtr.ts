@@ -50,7 +50,8 @@ export function createHudTrade( pl: Planet )
 
         const row = addRow( thead );
         addHeader( row, 'Product' );
-        addHeader( row, 'Cargo' );
+        // addHeader( row, 'Sell' );
+        // addHeader( row, 'Sell/Buy' );
         addHeader( row, 'Price (Cr)' );
         addHeader( row, 'Delta (%)' );
         addHeader( row, 'Weight (Kg)' );
@@ -87,7 +88,9 @@ export function createHudTrade( pl: Planet )
                 playNote(4, 'D', 50 );
                 destroyHudProduct();
                 createHudProduct( pl, tr, () => {
-                    units.textContent = '' + findSlot( tr.product ).units;
+                    // buyunits.textContent = '' + findSlot( tr.product ).units;
+                    // sellunits.textContent = tr.avail+ '';
+                    // units.textContent = findSlot( tr.product ).units + '/' +  tr.avail;
                 } );
             };
 
@@ -95,7 +98,9 @@ export function createHudTrade( pl: Planet )
             const price = getDeltaPrice(tr, tr.price);
 
             addCell( row, tr.product.name );
-            const units = addCell( row, findSlot( tr.product ).units + '' );
+            // const buyunits = addCell( row, findSlot( tr.product ).units + '' );
+            // const sellunits = addCell( row, tr.avail+ '' );
+            // const units =  addCell( row, findSlot( tr.product ).units + '/' +  tr.avail );
             addCell( row, ''+tr.price );
             addCell( row, getSign(price) + ''+  Math.abs(price)+'%' );
             addCell( row, ''+tr.product.weight );
