@@ -24,8 +24,19 @@ A positive delta price shows an a positive price over the guild's price, a negat
 The purchase of an asset is subject to the availability of credit and space in the cargo.
 
 Game progress is saved automatically into browser storage.
+
 Shift click on the start page to generare a new sector.
 
 
+
+# Install instructions
+- Download o clone the repository
+- Install dependencies:
+```npm i ```
+
+- run local server:
+``` npm run dev```
+- connect with browser to:
+```http://localhost:1234```
 
 
