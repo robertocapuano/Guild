@@ -36,7 +36,7 @@ Shift click on the start page to generare a new sector.
 
 - run local server:
 ``` npm run dev```
-- connect with browser to:
+- connect to:
 ```http://localhost:1234```
 
 
