@@ -95,14 +95,14 @@ export function createHudTrade( pl: Planet )
             };
 
 
-            const price = getDeltaPrice(tr, tr.price);
+            const delta = getDeltaPrice(tr);
 
             addCell( row, tr.product.name );
             const sellunits  = addCell( row, findSlot( tr.product ).units + '' );
             // const buyunits = addCell( row, tr.avail+ '' );
             // const units =  addCell( row, findSlot( tr.product ).units + '/' +  tr.avail );
             addCell( row, ''+tr.price );
-            addCell( row, getSign(price) + ''+  Math.abs(price)+'%' );
+            addCell( row, getSign(delta) + ''+  Math.abs(delta)+'%' );
             addCell( row, ''+tr.product.weight );
             // addCell( row, ''+tr.demand );
             // addCell( row, ''+tr.supply );

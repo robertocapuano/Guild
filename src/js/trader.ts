@@ -12,13 +12,13 @@ export function getSellPrice( pl: Planet, tr: ProductTrade )
     return Math.max( Math.round( (tr.price *   (1-pl.taxes) *100 )/100), 1 );
 }
 
-export function getDeltaPrice( tr: ProductTrade, price: number )
+export function getDeltaPrice( tr: ProductTrade )
 {
     const slot = findSlot( tr.product );
     if (slot.lastPrice === 0 )
         return 0;
 
-    return Math.trunc( 10000 * (price - slot.lastPrice)/ price )/100;
+    return Math.trunc( 10000 * (tr.price -slot.lastPrice) / slot.lastPrice )/100;
 }
 
 export function getBasePrice(pr: Product )
