@@ -30,6 +30,7 @@
     display: inline-block;
     vertical-align: top;
     width: 0.1rem;
+    /* box-shadow: 0 0 5px #9ecaed; */
     /* height: 15rem; */
     color: #fff;
     background-color: #568;
@@ -39,14 +40,10 @@
   }
 
    .msysname {
-    /* display: block; */
-    /* position: absolute; */
     left: 0.5rem;
     bottom: 0;
-    /* font-family: monospace; */
     font-size: .75rem;
-    color: #fff;
-    /* animation: fadeinMap 6000ms linear forwards; */
+    color: #ffffffa0;
   } 
   
   .mplanet {

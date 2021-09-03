@@ -73,18 +73,20 @@ export function createSysMap( systems: System[], selectionListener: ( pl: Planet
             system.planets.forEach( (pl, i ) =>
             {
                 const radius = sizea[pl.size];
+                const rgb = `rgb(${pl.baseColor.r},${pl.baseColor.g},${pl.baseColor.b})`;
 
                 const mplanet = REDOM.el('div',{
                     id: nextid('map'),
                     classList: 'mplanet tooltip',
                     style: {
-                        'background-color': `rgb(${pl.baseColor.r},${pl.baseColor.g},${pl.baseColor.b})`,
+                        'background-color': rgb,
                         'animation-delay': `${i*250}ms`,
                         'top': `${ PLANET_H*i  }px`,
                         'left': `${-radius}rem`,
                         'width': `${radius*2}rem`,
                         'height': `${radius*2}rem`,
                         'animation': '2000ms ease-out 2000ms 1 normal forwards running slideInMap',
+                        'box-shadow': `0 0 8px ${rgb}`,
                     }
                 });
                 mplanets.push( mplanet );
