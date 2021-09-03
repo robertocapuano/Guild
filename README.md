@@ -30,7 +30,7 @@ Shift click on the start page to generare a new sector.
 
 
 # Install instructions
-- Download o clone the repository
+- Download or clone the repository
 - Install dependencies:
 ```npm i ```
 
