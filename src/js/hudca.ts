@@ -101,8 +101,14 @@ export function createHudCargo( exitListener: ()=>void )
                         },
                     });
                     REDOM.mount( cell, btn );
+                    let exited = false;
 
                     btn.onclick = () => {
+                        if (exited)
+                            return;
+
+                        exited = true;
+                        
                         playNote(4, 'C', 50 );
                         exitListener();
                     }
