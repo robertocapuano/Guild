@@ -12,7 +12,9 @@
   "author": "Roberto Capuano",
   "license": "ISC",
   "devDependencies": {
+    "@parcel/packager-raw-url": "^2.0.0-rc.0",
     "@parcel/transformer-image": "^2.0.0-rc.0",
+    "@parcel/transformer-webmanifest": "^2.0.0-rc.0",
     "jszip-cli": "^1.4.24",
     "parcel": "latest"
   },
