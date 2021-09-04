@@ -6,7 +6,6 @@
     top: 100px;
      width: 22rem;
      height: 15rem;
-      
 }
 
 .number-circle {
@@ -21,11 +20,11 @@
   
   @keyframes hudtrRotateIn {
     from {
-        transform:  perspective(1000px) rotateY(-0deg) translateX(+20rem);;
+        transform:  perspective(1000px) rotateY(-0deg) translateX(+20rem);
         opacity: .0;
       }
       to {
-        transform:  perspective(1000px) rotateY(-15deg) translateX(0);
+        transform:  perspective(1000px) rotateY(-15deg) translateX(0) translateZ(50px);
         opacity: .5;
     }
   }
