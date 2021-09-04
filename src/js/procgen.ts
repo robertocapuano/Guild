@@ -69,7 +69,7 @@ function genSystems(): System[]
   
   const all_pos = [];
   const THRESHOLD_X = 70;
-  const THRESHOLD_Y = 50;
+  const THRESHOLD_Y = 40;
 
   let brk = 0;
 
