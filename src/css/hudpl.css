@@ -26,7 +26,7 @@
       opacity: .0;
     }
     from {
-      transform:  perspective(1000px) rotateY(+15deg) translateX(0);
+      transform:  perspective(1000px) rotateY(+15deg) translateX(0) translateZ(50px);
       opacity: .5;
   }
 }
