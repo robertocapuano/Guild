@@ -15,14 +15,10 @@ export function createPlanet( pl: Planet )
         const terrain = REDOM.el('div',{
             classList: 'terrain',
             style: {
-            //     'animation': 'rotatePlanetCCW 10s linear infinite',
-            //     '-webkit-animation': 'rotatePlanetCCW 10s linear infinite',
             '-webkit-animation': `rotatePlanet ${rot}s linear infinite`,
             'animation': `rotatePlanet ${rot}s linear infinite`,
             },
         });
-        // -webkit-animation: rotatePlanet 10s linear infinite;
-        // animation: rotatePlanet 10s linear infinite;
 
         const planetClip = REDOM.el('div',{
             classList: 'planetClip',
@@ -59,9 +55,7 @@ export function createPlanet( pl: Planet )
 
             const bg1 = `rgb(${r1},${g1},${b1})`;
             const bg2 = `rgb(${rgb2.r},${rgb2.g},${rgb2.b})`;
-            // const bg3 = `rgb(200,20,12)`;
 
-            // const bg = `radial-gradient(circle farthest-side at 0% 0%, rgba(255, 255, 255, 0.25) 0%, rgba(0, 0, 0, 0.35) 100%), radial-gradient(circle farthest-side at 0% 0%, ${bg1} 25%, transparent 80%), radial-gradient(circle farthest-side at 0% 0%, ${bg2} 0%, transparent 100%)`;
             const bg = `radial-gradient(circle farthest-side at 0% 0%, rgba(255, 255, 255, 0.25) 0%, rgba(0, 0, 0, 0.35) 100%), radial-gradient(circle farthest-side at 0% 0%, ${bg1} 25%, transparent 80%), radial-gradient(circle farthest-side at 0% 0%, ${bg2} 0%, transparent 100%), radial-gradient(circle farthest-side at 0% 0%, #005700 0%, #270300 85%)`;
             planetClip.style.setProperty('background-image', bg);
 
@@ -115,13 +109,7 @@ export function createPlanet( pl: Planet )
                         r += pl.weights[i] * (simplex.noise4D(p * nx,p * ny, p * nz, p * nw) + 1) / 2;
                     }
 
-                    // var r = 5 * (simplex.noise4D(nx, ny, nz, nw) + 1) / 2
-                    //     + .1 * (simplex.noise4D(2 * nx, 2 * ny, 2 * nz, 2 * nw) + 1) / 2
-                    //     + 3.25 * (simplex.noise4D(4 * nx, 4 * ny, 4 * nz, 4 * nw) + 1) / 2
-
-                    // var r = (perlin2( (x/256), (y/64)  ) +1 )/2;
                     const v = ((r) / pl.sumWeight) * 255;
-                    // var g = simplex.noise3D(x / 8, y / 8, t/16) * 0.5 + 0.5;
                     const ii = (x + y * WIDTH) * 4;
 
                     data[ii + 0] = v;
