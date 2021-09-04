@@ -22,7 +22,7 @@ const backToMap = () => {
 
 const showPlanet = ( pl: Planet ) =>{
     
-    playNote(4, 'C', 50 );
+    playNote(4, 'F', 50 );
 
     setTimeout( () => {
         createPlanet(pl);

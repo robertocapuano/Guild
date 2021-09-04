@@ -1,5 +1,5 @@
 
-let audioContext = new (window.AudioContext || window.webkitAudioContext)();
+let audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 let mainGainNode = null;
 
 let noteFreq: Array< { [index: string]: number } > = [];
@@ -112,18 +112,21 @@ function createNoteTable() {
 export function setupAudio() {
   noteFreq = createNoteTable();
 
-  mainGainNode = audioContext.createGain();
-  mainGainNode.connect(audioContext.destination);
+  mainGainNode = audioCtx.createGain();
+  mainGainNode.connect(audioCtx.destination);
   mainGainNode.gain.value = 1;// volumeControl.value;
 }
 
-function playTone(freq: number, type: string) {
-  let osc = audioContext.createOscillator();
+function playTone(freq: number, type: OscillatorType,/* dur: number*/ ) {
+
+  let osc: OscillatorNode = audioCtx.createOscillator();
   osc.connect(mainGainNode);
 
   osc.type = type;
   osc.frequency.value = freq;
   osc.start();
+
+  // osc.stop( audioCtx.currentTime + dur );
 
   return osc;
 }
@@ -136,8 +139,8 @@ export function playNote( octave: number, note: string, dur: number )
 {
   const freq = noteFreq[octave][note];
 
-  const osc = playTone(freq, 'sine');
-
+  const osc = playTone(freq, 'sine', );
   setTimeout( () => osc.stop(), dur );
+
 }
             
