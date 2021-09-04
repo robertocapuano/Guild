@@ -1,5 +1,5 @@
 import * as REDOM from 'redom';
-import { changeVolume, playNote, setupAudio } from './audio';
+import { changeVolume, setupAudio } from './audio';
 import { PI, RAD, TWOPI } from "./math";
 import { nextid, RND } from "./utils";
 
