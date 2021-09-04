@@ -210,7 +210,13 @@ export function createIntro( startCall: ()=>void ): HTMLElement
             }, 1000 );
         };
 
+        let started = false;
+
         container.addEventListener('click', (event) => {
+            if (started)
+                return;
+
+            started = true;
             const isClear = event.shiftKey;
             start(isClear)
         });
