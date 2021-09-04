@@ -6,8 +6,6 @@
      width: 15rem;
      height: auto; 
       opacity: 0;
-      /* z-index: 2000; */
-    /* animation: 3000ms ease-out 500ms 1 normal forwards running hudplRotateIn */
 }
   
 @keyframes hudplRotateIn {

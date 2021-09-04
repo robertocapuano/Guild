@@ -60,16 +60,14 @@ table.hud::-webkit-scrollbar-thumb {
 button
 {
   padding: 0;
-font: inherit;
-color: inherit;
-background-color: transparent;
-cursor: pointer;
-border: 1px solid #FFF;
-padding: 5px 20px;
-
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
+  border: 1px solid #FFF;
+  padding: 5px 20px;
 }
+
 button:active {
   background-color: #AAA;
-  /* box-shadow: 0 5px #FFF; */
-  /* transform: translateZ(4px); */
 }

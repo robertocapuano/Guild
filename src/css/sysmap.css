@@ -2,15 +2,7 @@
   .map-wrapper {
     width: 100vw;
     position: absolute;
-    /* left: 0; */
     height: 100vh;
-
-    /* display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-column-gap: 10px;
-    grid-template-rows: repeat(4, 1fr);
-    grid-row-gap: 10px; */
-
   }
   
   .map-wrapper {
@@ -30,13 +22,10 @@
     display: inline-block;
     vertical-align: top;
     width: 0.1rem;
-    /* box-shadow: 0 0 5px #9ecaed; */
-    /* height: 15rem; */
     color: #fff;
     background-color: #568;
     transform: scale(0);
     transform-origin: top center;
-    /* animation: scaleUpMap 1500ms linear forwards; */
   }
 
    .msysname {
@@ -51,7 +40,6 @@
     display: block;
     border-radius: 50%;
     opacity: 0;
-    /* animation: 3000ms ease-out 3000ms 1 normal forwards running slideInMap; */
 }
 
   .mname {
@@ -100,29 +88,17 @@
 .tooltip {
   position: relative;
   display: inline-block;
-  /* border-bottom: 1px dotted white; */
-  /* overflow:visible; */
-
-
 }
 
 /* Tooltip text */
 .tooltip .tooltiptext {
   visibility: hidden;
-  /* width: 80px; */
-  /* background-color: black; */
   color: rgba(255,255,255,.7);
   text-align: left;
   margin-left: 1.5rem;
-  /* padding: 5px 0; */
-  /* border-radius: 6px; */
-
-  /* Position the tooltip text - see examples below! */
   position: absolute;
-  /* z-index: 300; */
 }
 
-/* Show the tooltip text when you mouse over the tooltip container */
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }
