@@ -10,12 +10,15 @@
     "pack": "npm run clean && npm run build &&npm run zip"
   },
   "author": "Roberto Capuano",
-  "license": "ISC",
+  "homepage": "https://2think.it",
+  "repository": {
+    "url": "git@github.com:robertocapuano/Guild.git"
+  },
+  "license": "GPL-3.0",
   "devDependencies": {
     "@parcel/packager-raw-url": "^2.0.0-rc.0",
     "@parcel/transformer-image": "^2.0.0-rc.0",
     "@parcel/transformer-webmanifest": "^2.0.0-rc.0",
-    "jszip-cli": "^1.4.24",
     "parcel": "latest"
   },
   "dependencies": {
