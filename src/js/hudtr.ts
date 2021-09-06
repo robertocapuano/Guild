@@ -85,7 +85,7 @@ export function createHudTrade( pl: Planet )
         {
             const row = addRow( tbody );
             row.onclick = () => {
-                playNote(4, 'D', 50 );
+                playNote(4, 'D', 150 );
                 destroyHudProduct();
                 createHudProduct( pl, tr, () => {
                     sellunits.textContent = '' + findSlot( tr.product ).units;

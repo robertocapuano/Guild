@@ -1,5 +1,7 @@
 import * as REDOM from 'redom';
-import { changeVolume, setupAudio } from './audio';
+import { ambient, playNote, setupAudio } from './audio';
+import { SHORT_NOTE } from './consts';
+import { initDrone } from './drone';
 import { PI, RAD, TWOPI } from "./math";
 import { nextid, RND } from "./utils";
 
@@ -196,7 +198,10 @@ export function createIntro( startCall: ()=>void ): HTMLElement
                 window.localStorage.clear();
 
             setupAudio();
-            changeVolume( .25 );
+
+            playNote(4, 'A', SHORT_NOTE );
+
+            initDrone();
 
             title.style.animation = 'fadeOut 500ms linear forwards';
             author.style.animation = 'fadeOut 500ms linear forwards';
@@ -213,6 +218,7 @@ export function createIntro( startCall: ()=>void ): HTMLElement
         let started = false;
 
         container.addEventListener('click', (event) => {
+
             if (started)
                 return;
 

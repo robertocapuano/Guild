@@ -1,5 +1,6 @@
 import { playNote } from './audio';
 import { initCargo } from './cargo';
+import { SHORT_NOTE } from './consts';
 import { createHudCargo } from './hudca';
 import { createHudPlanet, destroyHudPlanet } from './hudpl';
 import { createHudTrade, destroyHudTrade } from './hudtr';
@@ -22,7 +23,7 @@ const backToMap = () => {
 
 const showPlanet = ( pl: Planet ) =>{
     
-    playNote(4, 'F', 50 );
+    playNote(4, 'F', SHORT_NOTE );
 
     setTimeout( () => {
         createPlanet(pl);

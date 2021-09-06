@@ -3,6 +3,7 @@ import { addCell, addHeader, addRow } from './hud';
 import { nextid } from "./utils";
 import { cargo } from './cargo';
 import { playNote } from './audio';
+import { SHORT_NOTE } from './consts';
 
 export function createHudCargo( exitListener: ()=>void )
 {
@@ -109,7 +110,7 @@ export function createHudCargo( exitListener: ()=>void )
 
                         exited = true;
                         
-                        playNote(4, 'C', 50 );
+                        playNote(4, 'C', SHORT_NOTE );
                         exitListener();
                     }
                 }
