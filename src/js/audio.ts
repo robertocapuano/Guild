@@ -40,31 +40,31 @@ function createNoteTable() {
   // noteFreq[2]["A#"] = 116.540940379522479;
   // noteFreq[2]["B"] = 123.470825314031027;
 
-  noteFreq[3]["C"] = 130.812782650299317;
-  noteFreq[3]["C#"] = 138.591315488436048;
-  noteFreq[3]["D"] = 146.832383958703780;
-  noteFreq[3]["D#"] = 155.563491861040455;
-  noteFreq[3]["E"] = 164.813778456434964;
-  noteFreq[3]["F"] = 174.614115716501942;
-  noteFreq[3]["F#"] = 184.997211355817199;
-  noteFreq[3]["G"] = 195.997717990874647;
-  noteFreq[3]["G#"] = 207.652348789972569;
-  noteFreq[3]["A"] = 220.000000000000000;
-  noteFreq[3]["A#"] = 233.081880759044958;
-  noteFreq[3]["B"] = 246.941650628062055;
+  noteFreq[3]["C"] = 130;
+  noteFreq[3]["C#"] = 138;
+  noteFreq[3]["D"] = 146;
+  noteFreq[3]["D#"] = 155;
+  noteFreq[3]["E"] = 164;
+  noteFreq[3]["F"] = 174;
+  noteFreq[3]["F#"] = 184;
+  noteFreq[3]["G"] = 195;
+  noteFreq[3]["G#"] = 207;
+  noteFreq[3]["A"] = 220;
+  noteFreq[3]["A#"] = 233;
+  noteFreq[3]["B"] = 246;
 
-  noteFreq[4]["C"] = 261.625565300598634;
-  noteFreq[4]["C#"] = 277.182630976872096;
-  noteFreq[4]["D"] = 293.664767917407560;
-  noteFreq[4]["D#"] = 311.126983722080910;
-  noteFreq[4]["E"] = 329.627556912869929;
-  noteFreq[4]["F"] = 349.228231433003884;
-  noteFreq[4]["F#"] = 369.994422711634398;
-  noteFreq[4]["G"] = 391.995435981749294;
-  noteFreq[4]["G#"] = 415.304697579945138;
-  noteFreq[4]["A"] = 440.000000000000000;
-  noteFreq[4]["A#"] = 466.163761518089916;
-  noteFreq[4]["B"] = 493.883301256124111;
+  noteFreq[4]["C"] = 261;
+  noteFreq[4]["C#"] = 277;
+  noteFreq[4]["D"] = 293;
+  noteFreq[4]["D#"] = 311;
+  noteFreq[4]["E"] = 329;
+  noteFreq[4]["F"] = 349;
+  noteFreq[4]["F#"] = 369;
+  noteFreq[4]["G"] = 391;
+  noteFreq[4]["G#"] = 415;
+  noteFreq[4]["A"] = 440;
+  noteFreq[4]["A#"] = 466;
+  noteFreq[4]["B"] = 493;
 
   // noteFreq[5]["C"] = 523.251130601197269;
   // noteFreq[5]["C#"] = 554.365261953744192;
@@ -114,33 +114,56 @@ export function setupAudio() {
 
   mainGainNode = audioCtx.createGain();
   mainGainNode.connect(audioCtx.destination);
-  mainGainNode.gain.value = 1;// volumeControl.value;
+  mainGainNode.gain.value = 1.;// volumeControl.value;
 }
 
-function playTone(freq: number, type: OscillatorType,/* dur: number*/ ) {
+function impulseResponse( duration, decay ) {
+  let sampleRate = audioCtx.sampleRate;
+  let length = sampleRate * duration;
+  let impulse = audioCtx.createBuffer(2, length, sampleRate);
+  let impulseL = impulse.getChannelData(0);
+  let impulseR = impulse.getChannelData(1);
+
+  if (!decay)
+      decay = 2.0;
+  for (let i = 0; i < length; i++){
+    impulseL[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / length, decay);
+    impulseR[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / length, decay);
+  }
+  return impulse;
+}
+
+
+function playTone(freq: number, type: OscillatorType, dur: number ) {
 
   let osc: OscillatorNode = audioCtx.createOscillator();
-  osc.connect(mainGainNode);
+  // osc.connect(mainGainNode);
 
   osc.type = type;
   osc.frequency.value = freq;
+  
+  const convolver = audioCtx.createConvolver();
+  const dur_s = dur/1000;
+  const dec_s = dur_s /4;
+  convolver.buffer = impulseResponse(dur_s,dec_s);
+  osc.connect(convolver);
+  convolver.connect(mainGainNode);
+  
   osc.start();
-
-  // osc.stop( audioCtx.currentTime + dur );
+  osc.stop( audioCtx.currentTime + dur_s );
 
   return osc;
 }
 
-export function changeVolume(value: number) {
-  mainGainNode.gain.value = value;
-}
+// export function changeVolume(value: number) {
+//   mainGainNode.gain.value = value;
+// }
 
 export function playNote( octave: number, note: string, dur: number )
 {
   const freq = noteFreq[octave][note];
 
-  const osc = playTone(freq, 'sine', );
-  setTimeout( () => osc.stop(), dur );
+  playTone(freq, 'sine', dur );
 
 }
             
