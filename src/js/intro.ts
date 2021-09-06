@@ -1,6 +1,6 @@
 import * as REDOM from 'redom';
-import { ambient, playNote, setupAudio } from './audio';
-import { SHORT_NOTE } from './consts';
+import { playNote, setupAudio } from './audio';
+import { SHORT_NOTE, VERSION } from './consts';
 import { initDrone } from './drone';
 import { PI, RAD, TWOPI } from "./math";
 import { nextid, RND } from "./utils";
@@ -46,7 +46,7 @@ export function createIntro( startCall: ()=>void ): HTMLElement
 
 
     const author = REDOM.el( 'div', {
-        textContent: `(c) ${new Date().getFullYear()} - 2 THINK SNC`,
+        textContent: `v.${VERSION} - (c) ${new Date().getFullYear()} - 2 THINK SNC`,
         style: {
             fontSize: '.5rem',
             'letter-spacing': '.1rem',
