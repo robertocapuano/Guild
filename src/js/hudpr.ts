@@ -1,6 +1,7 @@
 import * as REDOM from 'redom';
 import { playNote } from './audio';
 import { buy, canBuy, canSell, findSlot, sell } from './cargo';
+import { LONG_NOTE, SHORT_NOTE } from './consts';
 import { addCell, addHeader, addRow } from './hud';
 import { updateCargo } from './hudca';
 import { getBuyPrice, getDeltaPrice, getSellPrice } from './trader';
@@ -89,13 +90,13 @@ export function createHudProduct( pl: Planet, tr: ProductTrade, updateCell: ()=>
                     REDOM.mount( cell, buyBtn );
 
                     buyBtn.addEventListener( "click", () => {
-                        if (!canBuy(tr) )
+                        if (!canBuy(tr, buyPrice) )
                         {
-                            playNote(3, 'C', 50 );
+                            playNote(3, 'C', SHORT_NOTE );
                             return;
                         }
 
-                        playNote(4, 'E', 50 );
+                        playNote(4, 'E', SHORT_NOTE );
 
                         buy( tr, buyPrice );
                         updateCell();
@@ -120,7 +121,7 @@ export function createHudProduct( pl: Planet, tr: ProductTrade, updateCell: ()=>
 
                 const buyPrice = getBuyPrice( pl, tr );
                 addCell(row, ''+ `${buyPrice} (Cr)` );
-                addCell(row, ''+ `${ getSignedPrice(getDeltaPrice(tr, buyPrice))}%` );
+                addCell(row, ''+ `${ getSignedPrice(getDeltaPrice(tr))}%` );
             }
 
             {
@@ -139,14 +140,15 @@ export function createHudProduct( pl: Planet, tr: ProductTrade, updateCell: ()=>
                     sellBtn.addEventListener( "click", () => {
                         if (!canSell(tr) )
                         {
-                            playNote(3, 'C', 50 );
+                            playNote(3, 'C', LONG_NOTE );
                             return;
                         }
 
-                        playNote(4, 'E', 50 );
+                        playNote(4, 'E', SHORT_NOTE );
                         sell( tr, sellPrice );
                         updateCell();
                         updateCargo();
+                        availBuy.textContent = `${tr.avail}`;
                         availSell.textContent = `${findSlot(tr.product).units}` ;
 
                     });
@@ -166,7 +168,7 @@ export function createHudProduct( pl: Planet, tr: ProductTrade, updateCell: ()=>
 
                 const sellPrice =  getSellPrice( pl, tr );
                 addCell(row, ''+ `${sellPrice} (Cr)` );
-                addCell(row, ''+ `${getSignedPrice(getDeltaPrice(tr, sellPrice))}%` );
+                addCell(row, ''+ `${getSignedPrice(getDeltaPrice(tr))}%` );
             }
         }
         

@@ -31,8 +31,6 @@ export function initCargo()
 
         storeItem( 'cargo', cargo );
     }
-
-    // console.log( cargo );
 }
 
 export function findSlot( pr: Product ): CargoSlot
@@ -40,11 +38,11 @@ export function findSlot( pr: Product ): CargoSlot
     return cargo.slots.find( ( slot ) => slot.product === pr );
 }
 
-export function canBuy( tr: ProductTrade )
+export function canBuy( tr: ProductTrade, buyPrice: number )
 {
     return tr.avail>0 &&
             (cargo.gross+ tr.product.weight)<cargo.capacity 
-                && (cargo.credit-tr.price)>0;
+                && (cargo.credit-buyPrice)>0;
 }
 
 export function canSell( tr: ProductTrade )
@@ -55,11 +53,11 @@ export function canSell( tr: ProductTrade )
 export function buy( tr: ProductTrade, buyPrice: number )
 {
     cargo.gross += tr.product.weight;
-    cargo.credit -= buyPrice;
+    cargo.credit = Math.max( 0, cargo.credit - buyPrice );
     const slot = findSlot( tr.product );
     slot.units += 1;
     slot.lastPrice = buyPrice;
-    tr.avail -= 1;
+    tr.avail = Math.max( 0, tr.avail -1 );
 
     storeItem( 'cargo', cargo );
 }
@@ -69,6 +67,8 @@ export function sell( tr: ProductTrade, sellPrice: number )
     cargo.gross -= tr.product.weight;
     cargo.credit += sellPrice;
     findSlot( tr.product ).units -= 1;
+
+    tr.avail++;
 
     storeItem( 'cargo', cargo );
 }
