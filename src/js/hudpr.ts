@@ -144,7 +144,7 @@ export function createHudProduct( pl: Planet, tr: ProductTrade, updateCell: ()=>
                             return;
                         }
 
-                        playNote(4, 'E', SHORT_NOTE );
+                        playNote(4, 'D', SHORT_NOTE );
                         sell( tr, sellPrice );
                         updateCell();
                         updateCargo();
