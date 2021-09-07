@@ -4,6 +4,7 @@ import { SHORT_NOTE } from './consts';
 import { createHudCargo } from './hudca';
 import { createHudPlanet, destroyHudPlanet } from './hudpl';
 import { createHudTrade, destroyHudTrade } from './hudtr';
+import { createIcons } from './icons';
 import { createIntro } from './intro';
 import { createPlanet, destroyPlanet } from './planet';
 import { initSystems, RSeed } from './procgen';
@@ -11,6 +12,8 @@ import { createStarfield } from './starfield';
 import { createSysMap } from './sysmap';
 import { Planet, System } from './types';
 import { RND } from './utils';
+
+createIcons();
 
 RSeed( Math.trunc(RND()* 255) );
 
