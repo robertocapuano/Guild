@@ -4,6 +4,7 @@ import { SHORT_NOTE, VERSION } from './consts';
 import { initDrone } from './drone';
 import { PI, RAD, TWOPI } from "./math";
 import { nextid, RND } from "./utils";
+// import { version } from '../../package.json';
 
 export function createIntro( startCall: ()=>void ): HTMLElement
 {
@@ -199,7 +200,7 @@ export function createIntro( startCall: ()=>void ): HTMLElement
 
             setupAudio();
 
-            playNote(4, 'A', SHORT_NOTE );
+            playNote(4 - +isClear, 'A', SHORT_NOTE );
 
             initDrone();
 

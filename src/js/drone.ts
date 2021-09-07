@@ -1,3 +1,4 @@
+import { impulseResponse } from "./audio";
 import { RND } from "./utils";
 
 let audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -8,26 +9,10 @@ gain.gain.value = .4;
 gain.connect(audioCtx.destination);
 for ( let i=0; i<64; ++i )
 {
-  const buffer = initBuffer( 4 );
+  const buffer = impulseResponse( 4 );
 
   buffers.push( buffer );
 }
-
-function initBuffer( duration:number  ) {
-    var sampleRate = audioCtx.sampleRate;
-    var length = sampleRate * duration;
-    var impulse = audioCtx.createBuffer(2, length, sampleRate);
-    var impulseL = impulse.getChannelData(0);
-    var impulseR = impulse.getChannelData(1);
-  
-    const decay = duration * .1;
-    for (var i = 0; i < length; i++){
-      impulseL[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / length, decay);
-      impulseR[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / length, decay);
-    }
-    return impulse;
-  }
-
 
 function createNoiseGen(freq:number,dur_s: number) {
 
@@ -45,7 +30,6 @@ function createNoiseGen(freq:number,dur_s: number) {
   noise.stop( audioCtx.currentTime +  dur_s );
 
 }
-
 
 function generate(base_note: number, num_osc:number, dur_s: number ){
 

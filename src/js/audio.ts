@@ -117,7 +117,7 @@ export function setupAudio() {
   mainGainNode.gain.value = 1.;// volumeControl.value;
 }
 
-function impulseResponse( duration, decay ) {
+export function impulseResponse( duration:number, decay?:number ) {
   let sampleRate = audioCtx.sampleRate;
   let length = sampleRate * duration;
   let impulse = audioCtx.createBuffer(2, length, sampleRate);
@@ -144,8 +144,8 @@ function playTone(freq: number, type: OscillatorType, dur: number ) {
   
   const convolver = audioCtx.createConvolver();
   const dur_s = dur/1000;
-  const dec_s = dur_s /4;
-  convolver.buffer = impulseResponse(dur_s,dec_s);
+  // const dec_s = dur_s /4;
+  convolver.buffer = impulseResponse(dur_s, .1);
   osc.connect(convolver);
   convolver.connect(mainGainNode);
   
