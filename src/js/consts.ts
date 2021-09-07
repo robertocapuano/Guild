@@ -6,7 +6,7 @@ export const HUD_Z = 2000;
 export const PLANET_H = 60; 
 export const PLANET_W = 150;
 
-export const SHORT_NOTE = 150;
+export const SHORT_NOTE = 200;
 export const LONG_NOTE = 300;
 
 export const VERSION = '1.0.0'

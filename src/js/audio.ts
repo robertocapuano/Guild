@@ -1,6 +1,6 @@
 
 export const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-export let mainGainNode = null;
+let mainGainNode = null;
 
 let noteFreq: Array< { [index: string]: number } > = [];
 
@@ -114,7 +114,7 @@ export function setupAudio() {
 
   mainGainNode = audioCtx.createGain();
   mainGainNode.connect(audioCtx.destination);
-  mainGainNode.gain.value = 2.;// volumeControl.value;
+  mainGainNode.gain.value = 1.;// volumeControl.value;
 }
 
 export function impulseResponse( duration:number, decay?:number ) {
@@ -157,6 +157,12 @@ function playTone(freq: number, type: OscillatorType, dur: number ) {
   
   osc.start();
   osc.stop( audioCtx.currentTime + dur_s );
+
+  setTimeout( () => {
+    osc.stop();
+    bandpass.disconnect();
+  }, dur_s/1000+1000  );
+
 
   return osc;
 }

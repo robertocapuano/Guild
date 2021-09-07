@@ -1,7 +1,7 @@
 import * as REDOM from 'redom';
 import { playNote } from './audio';
 import { buy, canBuy, canSell, findSlot, sell } from './cargo';
-import { LONG_NOTE, SHORT_NOTE } from './consts';
+import { SHORT_NOTE } from './consts';
 import { addCell, addHeader, addRow } from './hud';
 import { updateCargo } from './hudca';
 import { getBuyPrice, getDeltaPrice, getSellPrice } from './trader';
@@ -92,7 +92,7 @@ export function createHudProduct( pl: Planet, tr: ProductTrade, updateCell: ()=>
                     buyBtn.addEventListener( "click", () => {
                         if (!canBuy(tr, buyPrice) )
                         {
-                            playNote(3, 'C', SHORT_NOTE );
+                            playNote(4, 'C', SHORT_NOTE );
                             return;
                         }
 
@@ -140,7 +140,7 @@ export function createHudProduct( pl: Planet, tr: ProductTrade, updateCell: ()=>
                     sellBtn.addEventListener( "click", () => {
                         if (!canSell(tr) )
                         {
-                            playNote(3, 'C', LONG_NOTE );
+                            playNote(4, 'C', SHORT_NOTE );
                             return;
                         }
 
