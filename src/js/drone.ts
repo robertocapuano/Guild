@@ -21,8 +21,13 @@ function createNoiseGen(freq:number,dur_s: number) {
   bandpass.frequency.value = freq;
   bandpass.Q.value = 300;
 
+  let highpass = audioCtx.createBiquadFilter();
+  highpass.type = 'highpass';
+  highpass.frequency.value = freq;
+  highpass.Q.value = 10;
+
   // connect our graph
-  noise.connect(bandpass).connect(mainGainNode);
+  noise.connect(bandpass).connect(highpass).connect(mainGainNode);
   noise.start();
   noise.stop( audioCtx.currentTime +  dur_s );
 
