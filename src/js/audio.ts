@@ -145,7 +145,7 @@ function playTone(freq: number, type: OscillatorType, dur: number ) {
   const convolver = audioCtx.createConvolver();
   const dur_s = dur/1000;
   // const dec_s = dur_s /4;
-  convolver.buffer = impulseResponse(dur_s, .1);
+  convolver.buffer = impulseResponse(dur_s, 1);
   osc.connect(convolver);
   convolver.connect(mainGainNode);
   
