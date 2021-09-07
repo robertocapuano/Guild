@@ -40,18 +40,18 @@ function createNoteTable() {
   // noteFreq[2]["A#"] = 116.540940379522479;
   // noteFreq[2]["B"] = 123.470825314031027;
 
-  noteFreq[3]["C"] = 130;
-  noteFreq[3]["C#"] = 138;
-  noteFreq[3]["D"] = 146;
-  noteFreq[3]["D#"] = 155;
-  noteFreq[3]["E"] = 164;
-  noteFreq[3]["F"] = 174;
-  noteFreq[3]["F#"] = 184;
-  noteFreq[3]["G"] = 195;
-  noteFreq[3]["G#"] = 207;
-  noteFreq[3]["A"] = 220;
-  noteFreq[3]["A#"] = 233;
-  noteFreq[3]["B"] = 246;
+  // noteFreq[3]["C"] = 130;
+  // noteFreq[3]["C#"] = 138;
+  // noteFreq[3]["D"] = 146;
+  // noteFreq[3]["D#"] = 155;
+  // noteFreq[3]["E"] = 164;
+  // noteFreq[3]["F"] = 174;
+  // noteFreq[3]["F#"] = 184;
+  // noteFreq[3]["G"] = 195;
+  // noteFreq[3]["G#"] = 207;
+  // noteFreq[3]["A"] = 220;
+  // noteFreq[3]["A#"] = 233;
+  // noteFreq[3]["B"] = 246;
 
   noteFreq[4]["C"] = 261;
   noteFreq[4]["C#"] = 277;
