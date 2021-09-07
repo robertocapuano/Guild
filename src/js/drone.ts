@@ -1,12 +1,9 @@
 import { impulseResponse } from "./audio";
 import { RND } from "./utils";
+import { audioCtx, mainGainNode } from './audio';
 
-let audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 const buffers = [];
-const gain = audioCtx.createGain();
-gain.gain.value = .4;
 
-gain.connect(audioCtx.destination);
 for ( let i=0; i<64; ++i )
 {
   const buffer = impulseResponse( 4 );
@@ -22,10 +19,10 @@ function createNoiseGen(freq:number,dur_s: number) {
   let bandpass = audioCtx.createBiquadFilter();
   bandpass.type = 'bandpass';
   bandpass.frequency.value = freq;
-  bandpass.Q.value = 200;
+  bandpass.Q.value = 300;
 
   // connect our graph
-  noise.connect(bandpass).connect(audioCtx.destination);
+  noise.connect(bandpass).connect(mainGainNode);
   noise.start();
   noise.stop( audioCtx.currentTime +  dur_s );
 

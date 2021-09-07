@@ -1,6 +1,6 @@
 
-let audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-let mainGainNode = null;
+export const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+export let mainGainNode = null;
 
 let noteFreq: Array< { [index: string]: number } > = [];
 
@@ -114,7 +114,7 @@ export function setupAudio() {
 
   mainGainNode = audioCtx.createGain();
   mainGainNode.connect(audioCtx.destination);
-  mainGainNode.gain.value = 1.;// volumeControl.value;
+  mainGainNode.gain.value = 2.;// volumeControl.value;
 }
 
 export function impulseResponse( duration:number, decay?:number ) {
@@ -147,7 +147,13 @@ function playTone(freq: number, type: OscillatorType, dur: number ) {
   // const dec_s = dur_s /4;
   convolver.buffer = impulseResponse(dur_s, 1);
   osc.connect(convolver);
-  convolver.connect(mainGainNode);
+  
+  let bandpass = audioCtx.createBiquadFilter();
+  bandpass.type = 'bandpass';
+  bandpass.frequency.value = freq;
+  bandpass.Q.value = 50;
+  convolver.connect(bandpass);
+  bandpass.connect(mainGainNode);
   
   osc.start();
   osc.stop( audioCtx.currentTime + dur_s );
