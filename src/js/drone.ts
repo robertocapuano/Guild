@@ -2,9 +2,7 @@ import { impulseResponse } from "./audio";
 import { RND } from "./utils";
 import { audioCtx,  } from './audio';
 
- let mainGainNode = null;
-
-
+let mainGainNode = null;
 const buffers = [];
 
 for ( let i=0; i<64; ++i )
@@ -16,20 +14,19 @@ for ( let i=0; i<64; ++i )
 
 function createNoiseGen(freq:number,dur_s: number) {
 
-  let noise = audioCtx.createBufferSource();
+  const noise = audioCtx.createBufferSource();
   noise.buffer = buffers[ Math.trunc(buffers.length * RND()) ];
 
-  let bandpass = audioCtx.createBiquadFilter();
+  const bandpass = audioCtx.createBiquadFilter();
   bandpass.type = 'bandpass';
   bandpass.frequency.value = freq;
   bandpass.Q.value = 300;
 
-  let highpass = audioCtx.createBiquadFilter();
+  const highpass = audioCtx.createBiquadFilter();
   highpass.type = 'highpass';
   highpass.frequency.value = freq;
   highpass.Q.value = 10;
 
-  // connect our graph
   noise.connect(bandpass).connect(highpass).connect(mainGainNode);
   noise.start();
   noise.stop( audioCtx.currentTime +  dur_s );
@@ -75,21 +72,20 @@ function schedule()
 
     setTimeout( () => {
 
-
         const base_note = BASE_NOTE + RND() * DELTA_NOTE;
         const num_osc = NUM_OSC + RND() * DELTA_OSC;
 
         generate(base_note, num_osc, RND() * 2 +1 );
         schedule();
 
-    },timeout );
+    }, timeout );
 }
 
 export function initDrone()
 {
   mainGainNode = audioCtx.createGain();
   mainGainNode.connect(audioCtx.destination);
-  mainGainNode.gain.value = .5;// volumeControl.value;
+  mainGainNode.gain.value = .75;
 
-    schedule();
+  schedule();
 }
