@@ -28,7 +28,7 @@ table.hud{
   }
   table.hud td{
     padding: 15px;
-    text-align: left;
+    text-align: center;
     vertical-align:middle;
     font-weight: 300;
     font-size: 12px;

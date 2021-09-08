@@ -4,8 +4,9 @@
     position: absolute; 
     right: 4rem; 
     top: 100px;
-     width: 22rem;
-     height: 15rem;
+    width: 22rem;
+    height: 15rem;
+    max-width: 50%;
 }
 
 .number-circle {
@@ -15,6 +16,7 @@
   text-align: center;
   font-size: 1em;
   border: 1px solid #FFF;
+  margin: 0 auto;
 }
   
   
