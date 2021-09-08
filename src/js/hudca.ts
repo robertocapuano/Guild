@@ -110,7 +110,7 @@ export function createHudCargo( exitListener: ()=>void )
 
                         exited = true;
                         
-                        playNote(4, 'A#', SHORT_NOTE );
+                        playNote(4, 'C', SHORT_NOTE );
                         exitListener();
                     }
                 }
