@@ -1,7 +1,7 @@
 {
   "name": "guild",
   "version": "1.0.0",
-  "description": "js13k submission",
+  "description": "A space trader game.",
   "scripts": {
     "dev": "parcel serve src/index.html",
     "build": "parcel build src/index.html --no-source-maps --public-url ./",
