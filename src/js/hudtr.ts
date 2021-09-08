@@ -94,7 +94,6 @@ export function createHudTrade( pl: Planet )
                 } );
             };
 
-
             const delta = getDeltaPrice(tr);
 
             addCell( row, tr.product.name );
