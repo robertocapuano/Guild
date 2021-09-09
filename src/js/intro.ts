@@ -200,7 +200,7 @@ export function createIntro( startCall: ()=>void ): HTMLElement
 
             setupAudio();
 
-            playNote(4 - +isClear, 'A', SHORT_NOTE );
+            playNote(4, isClear ? 'B' : 'A', SHORT_NOTE );
 
             initDrone();
 
