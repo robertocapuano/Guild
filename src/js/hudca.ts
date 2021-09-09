@@ -73,14 +73,14 @@ export function createHudCargo( exitListener: ()=>void )
                 {
                     
                     const row = addRow(tbody);
-                    addCell(row, 'CAPACITY' );
+                    addCell(row, 'CAPACITY (KG)' );
                     addCell(row, ''+ Math.trunc(cargo.capacity - cargo.gross), 'cargoWeight' );
 
                 }
 
                 {
                     const row = addRow(tbody);
-                    addCell(row, 'CREDIT' );
+                    addCell(row, 'CREDIT (CR)' );
                     addCell(row, ''+ cargo.credit, 'cargoCredit' );
                 }
 
