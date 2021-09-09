@@ -20,7 +20,7 @@ on the right side:
 - Trade table: show products/goods quotations.
 - Product details: show how many products are available to buy/sell and prices.
 
-A positive Delta price indicate an increased price over the guild's trade price, a negative one the opposite.
+A positive Delta price indicates an increased price over the guild's trade price, a negative one the opposite.
 The purchase of an asset is subject to the availability of credit and space in the cargo.
 
 Game progress is saved automatically into browser storage.
