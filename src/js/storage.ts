@@ -4,9 +4,7 @@ export function readItem<T>( key: string ): T
     if ( !window['localStorage'] )
         return null;
 
-    const ser = window.localStorage.getItem( key );
-
-    // console.log( ser );
+    const ser = window.localStorage.getItem( 'guild_' +key );
 
     if (!ser)
         return null;
@@ -21,6 +19,14 @@ export function storeItem<T>( key: string, value: T )
 
     const ser = JSON.stringify( value );
 
-    window.localStorage.setItem( key, ser );
+    window.localStorage.setItem( 'guild_' +key, ser );
+}
+
+export function clearItem( key: string )
+{
+    if ( !window['localStorage'] )
+        return null;
+    
+     window.localStorage.removeItem( 'guild_' +key );
 }
 

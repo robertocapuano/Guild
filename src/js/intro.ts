@@ -3,6 +3,7 @@ import { playNote, setupAudio } from './audio';
 import { SHORT_NOTE, VERSION } from './consts';
 import { initDrone } from './drone';
 import { PI, RAD, TWOPI } from "./math";
+import { clearItem } from './storage';
 import { nextid, RND } from "./utils";
 // import { version } from '../../package.json';
 
@@ -196,7 +197,10 @@ export function createIntro( startCall: ()=>void ): HTMLElement
         const start = (isClear: boolean) => {
 
             if (isClear)
-                window.localStorage.clear();
+            {
+                clearItem('systems');
+                clearItem('cargo');
+            }
 
             setupAudio();
 
