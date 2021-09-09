@@ -1,4 +1,4 @@
-import { PLANET_H } from "./consts";
+import { PLANET_H, SYSTEMS_ITEM } from "./consts";
 import { PRODUCTS } from "./products";
 import { readItem, storeItem } from './storage';
 import { getBasePrice } from "./trader";
@@ -35,8 +35,7 @@ export function genSysNames() {
 
 export function initSystems(): System[]
 {
-  let systems: System[] = readItem( 'systems' );
-  // console.log( systems );
+  let systems: System[] = readItem( SYSTEMS_ITEM );
 
   if (systems)
   {
@@ -51,7 +50,7 @@ export function initSystems(): System[]
   }
 
   systems = genSystems();
-  storeItem( 'systems', systems );
+  storeItem( SYSTEMS_ITEM, systems );
 
   return systems;
 

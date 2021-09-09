@@ -1,6 +1,7 @@
 import { PRODUCTS } from './products';
 import { Cargo, CargoSlot, Product, ProductTrade } from "./types";
 import { readItem, storeItem } from './storage';
+import { CARGO_ITEM } from './consts';
 
 export const cargo: Cargo = {
     slots: [],
@@ -11,7 +12,7 @@ export const cargo: Cargo = {
 
 export function initCargo()
 {
-    const cargoStorage = readItem<Cargo>('cargo');
+    const cargoStorage = readItem<Cargo>(CARGO_ITEM);
 
     if ( cargoStorage )
     {
@@ -29,7 +30,7 @@ export function initCargo()
             lastPrice: product.basePrice,
         }) );
 
-        storeItem( 'cargo', cargo );
+        storeItem( CARGO_ITEM, cargo );
     }
 }
 
@@ -59,7 +60,7 @@ export function buy( tr: ProductTrade, buyPrice: number )
     slot.lastPrice = buyPrice;
     tr.avail = Math.max( 0, tr.avail -1 );
 
-    storeItem( 'cargo', cargo );
+    storeItem( CARGO_ITEM, cargo );
 }
 
 export function sell( tr: ProductTrade, sellPrice: number )
@@ -70,5 +71,5 @@ export function sell( tr: ProductTrade, sellPrice: number )
 
     tr.avail++;
 
-    storeItem( 'cargo', cargo );
+    storeItem(CARGO_ITEM, cargo );
 }

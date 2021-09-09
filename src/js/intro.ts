@@ -1,6 +1,6 @@
 import * as REDOM from 'redom';
 import { playNote, setupAudio } from './audio';
-import { SHORT_NOTE, VERSION } from './consts';
+import { CARGO_ITEM, SHORT_NOTE, SYSTEMS_ITEM, VERSION } from './consts';
 import { initDrone } from './drone';
 import { PI, RAD, TWOPI } from "./math";
 import { clearItem } from './storage';
@@ -198,8 +198,8 @@ export function createIntro( startCall: ()=>void ): HTMLElement
 
             if (isClear)
             {
-                clearItem('systems');
-                clearItem('cargo');
+                clearItem(SYSTEMS_ITEM);
+                clearItem(CARGO_ITEM);
             }
 
             setupAudio();
