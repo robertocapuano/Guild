@@ -10,9 +10,6 @@ import { getSignedPrice, nextid } from "./utils";
 
 export function createHudProduct( pl: Planet, tr: ProductTrade, updateCell: ()=>void )
 {
-    // const slot = findSlot( tr.product );
-    // const pr = tr.product;
-
     const tableContainer = document.querySelector("#hudtr-container");
 
     const container = REDOM.el('div',{

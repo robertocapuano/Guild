@@ -3,9 +3,9 @@
     position: absolute; 
     left: 4rem; 
     top: 100px;
-     width: 15rem;
-     height: auto; 
-      opacity: 0;
+    width: 15rem;
+    height: auto; 
+    opacity: 0;
 }
   
 @keyframes hudplRotateIn {
